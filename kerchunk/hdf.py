@@ -72,8 +72,8 @@ class SingleHdf5ToZarr:
             Dictionary containing reference structure. 
         """
         lggr.debug('Translation begins')
-        self._transfer_attrs(self._h5f, self._zroot)
-        self._h5f.visititems(self._translator)
+        self._transfer_attrs(self._h5f['CldTopHght'], self._zroot)
+        self._translator('CldTopHght', self._h5f['CldTopHght'])
         if self.inline > 0:
             self._do_inline(self.inline)
         if self.spec < 1:
